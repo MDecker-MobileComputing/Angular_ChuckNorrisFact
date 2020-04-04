@@ -19,7 +19,7 @@ export class AppComponent {
 
     // const url = 'http://date.jsontest.com/';
 
-    const url = 'http://api.icndb.com/jokes/random/';
+    const url = 'https://api.icndb.com/jokes/random/';
     // Web-API muss in Response den Header "Access-Control-Allow-Origin: *"
     // zurückliefern, sonst blockiert der Browser wegen CORS Policy den Request
     //

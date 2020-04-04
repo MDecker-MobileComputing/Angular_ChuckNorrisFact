@@ -16,3 +16,11 @@ Beispiel für JSON-Dokument, das für HTTP-Request an URL http://api.icndb.com/j
     }
 }
 ````
+
+URL für Zugriff via "GitHub Pages":  https://mdecker-mobilecomputing.github.io/Angular_ChuckNorrisFact/icndbClient/index.html
+
+Nachbearbeitung von mit `npm run build` erzeugte Datei [docs/icndbClient/index.html](docs/icndbClient/index.html):
+Die folgenden Attribute sind aus den `<script>`-Tags zu entfernen:
+* `type="module"`
+* `defer`
+* `nomodule`
