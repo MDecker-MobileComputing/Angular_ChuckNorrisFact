@@ -1,7 +1,14 @@
-<h1>Chuck Norris Facts from icndb.com</h1>
+<div class="container-lg">
 
-<button (click)="showNextJoke()">Show next joke</button>
+  <div style="text-align:center">
+    <h1 class="display-4 mt-3">Chuck Norris Facts from icndb.com</h1>
+  </div>
 
-<br><br>
+  <button class="btn btn-primary btn-lg btn-block mt-5"
+          (click)="showNextJoke()">Show next joke</button>
 
-<h3>{{ joke }}</h3>
+  <div class="jumbotron mt-5">
+    <h4>{{ joke }}</h4>
+  </div>
+
+</div>

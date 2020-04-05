@@ -31,14 +31,25 @@ Manual changes required in file `index.html` to enable direct opening of the app
 * `defer`
 * `nomodule`
 
-See also [this question on *stackoverflow.com*](https://stackoverflow.com/questions/58587692/how-to-remove-defer-nomodule-from-the-index-html-on-angular-build).
+To fix this when using a Linux machine, you can execute script [FixHtml.sh](./FixHtml.sh).
+
+See also [this question on *stackoverflow.com*](https://stackoverflow.com/questions/58587692/how-to-remove-defer-nomodule-from-the-index-html-on-angular-build), which is unsolved so far.
+
+<br>
+
+----
+## Internals ##
+
+The actual loading of the jokes from the REST-API via HTTP is implemented in service class [icndb.service.ts](src/app/icndb.service.ts).
+The jokes are not fetched individually, but in batches which are stored in an internal array that acts as queue.
+
+For styling the [bootstrap](https://getbootstrap.com) framework is used.
 
 <br>
 
 ----
 ## License ##
 
-See the [LICENSE file](LICENSE.md) for license rights and limitations (GPL v3)
-for the files in this repository.
+See the [LICENSE file](LICENSE.md) for license rights and limitations (GPL v3) for the files in this repository.
 
-The author of this application is *NOT** related to [The Internet Chuck Norris Database (icndb.com)](http://www.icndb.com/).
+The author of this application is *NOT* related to [The Internet Chuck Norris Database (icndb.com)](http://www.icndb.com/).

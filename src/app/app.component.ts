@@ -9,7 +9,7 @@ import { IcndbService } from './icndb.service';
 })
 export class AppComponent {
 
-  /** Current joke to be displayed on UI; referenced by interpolation in HTML. */
+  /** Current joke to be displayed on UI; referenced by {{ interpolation }} on HTML page. */
   public joke = '';
 
 

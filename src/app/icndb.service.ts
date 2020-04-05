@@ -14,13 +14,13 @@ export class IcndbService {
   /** Number of jokes to fetch with one HTTP-GET request. */
   private static readonly BATCHSIZE_OF_JOKES = 5;
 
-  /** Base URL without a slash at the end. */
+  /** URL of API endpoint to fetch random jokes; does not have slash at the end. */
   private static readonly BASE_URL_ENDPOINT = 'https://api.icndb.com/jokes/random';
 
   /** Constant to be set in constructor (therefore not declared as "static"). */
   private readonly URL_ENDPOINT;
 
-  /** Queue of strings with jokes. */
+  /** Array of strings acting as queue (first in, first out). */
   private jokeQueue: string[] = [];
 
 
@@ -89,7 +89,6 @@ export class IcndbService {
         }
 
         const jsonPayload: any = httpResponse.body;
-
         const statusTextFromApi = jsonPayload.type;
 
         if (statusTextFromApi !== 'success') {
@@ -105,10 +104,13 @@ export class IcndbService {
 
         for (const jokeObject of valueArray) {
 
-          const joke = jokeObject.joke;
+          let joke = jokeObject.joke;
+          joke = joke.replace(/&quot\;/g, '"'); // replace &quot; with quotation mark
+
           this.jokeQueue.push(joke);
         }
     });
-  }
+
+  } // fetchJokes()
 
 }
