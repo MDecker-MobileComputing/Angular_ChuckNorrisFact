@@ -11,4 +11,9 @@
     <h4>{{ joke }}</h4>
   </div>
 
+
+  <div class="mt-5 alert alert-warning" role="alert" *ngIf="showNoJokesWarning">
+    No jokes available; try again in a few seconds.
+  </div>
+
 </div>

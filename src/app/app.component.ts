@@ -12,6 +12,9 @@ export class AppComponent {
   /** Current joke to be displayed on UI; referenced by {{ interpolation }} on HTML page. */
   public joke = '';
 
+  /** While this flag has the value "true", a warning is made visible that says that currently no jokes are available. */
+  public showNoJokesWarning = false;
+
 
   /**
    * Triggers fetching of first batch of jokes.
@@ -30,6 +33,8 @@ export class AppComponent {
   public showNextJoke(): void {
 
     this.joke = this.icndbService.getJoke();
+
+    this.showNoJokesWarning = ( this.joke === '' );
   }
 
 }

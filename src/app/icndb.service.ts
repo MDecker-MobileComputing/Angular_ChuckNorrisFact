@@ -41,14 +41,14 @@ export class IcndbService {
    * Pops one joke from the queue. Will trigger loading of next batch of jokes
    * when queue is empty after this.
    *
-   * @return  Text of joke or message that currently no jokes are available.
+   * @return  Text of joke or empty string when no jokes are available.
    */
   public getJoke(): string {
 
     if ( this.jokeQueue.length === 0 ) {
 
       this.fetchJokes();
-      return 'No jokes available, please try again in a few seconds.';
+      return '';
     }
 
     const joke = this.jokeQueue.shift(); // method "shift()" removes element from array
@@ -72,10 +72,10 @@ export class IcndbService {
     // { observe: 'response' } as configuration to get access to whole HTTP response.
     // https://brianflove.com/2018/09/03/angular-http-client-observe-response/
 
-    const confObj: any = {};
-    confObj.observe = 'response';
 
-    this.httpClient.get(this.URL_ENDPOINT, confObj).subscribe((httpResponse) => {
+    const optionsObj: any = { observe: 'response' };
+
+    this.httpClient.get(this.URL_ENDPOINT, optionsObj).subscribe((httpResponse) => {
 
         const httpResponseAny: any = httpResponse;
 
