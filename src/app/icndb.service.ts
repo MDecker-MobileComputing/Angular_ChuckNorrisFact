@@ -38,7 +38,7 @@ export class IcndbService {
 
 
   /**
-   * Pops next joke from the queue. Will trigger loading of next batch of jokes
+   * Pops one joke from the queue. Will trigger loading of next batch of jokes
    * when queue is empty after this.
    *
    * @return  Text of joke or message that currently no jokes are available.
@@ -72,7 +72,7 @@ export class IcndbService {
     // { observe: 'response' } as configuration to get access to whole HTTP response.
     // https://brianflove.com/2018/09/03/angular-http-client-observe-response/
 
-    let confObj: any = {};
+    const confObj: any = {};
     confObj.observe = 'response';
 
     this.httpClient.get(this.URL_ENDPOINT, confObj).subscribe((httpResponse) => {
