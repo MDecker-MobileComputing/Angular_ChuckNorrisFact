@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IcndbService } from './icndb.service';
+import { FavstoreService } from './favstore.service';
 
 
 @Component({
@@ -20,8 +21,11 @@ export class AppComponent {
    * Triggers fetching of first batch of jokes.
    *
    * @param icndbService  Object with logic for fetching and caching jokes from REST-API.
+   * 
+   * @param favstoreService  Object for storing user's favorite jokes
    */
-  constructor(private icndbService: IcndbService){
+  constructor( private icndbService: IcndbService, 
+               private favstoreService: FavstoreService){
 
     icndbService.fetchJokes();
   }
