@@ -69,26 +69,27 @@ export class IcndbService {
    */
   public fetchJokes(): void {
 
-    // REST-API must have set the header "Access-Control-Allow-Origin: *",
-    // otherwise the browser will block the request because of his
-    // Cross-origin resource sharing (CORS) policy.
-    //
     // { observe: 'response' } as configuration to get access to whole HTTP response.
     // https://brianflove.com/2018/09/03/angular-http-client-observe-response/
 
-    this.httpClient.get(this.URL_ENDPOINT, { observe: 'response' }).subscribe((httpResponse) => {
+    let confObj: any = {};
+    confObj.observe = 'response';
 
-        const httpStatusCode = httpResponse.status;
+    this.httpClient.get(this.URL_ENDPOINT, confObj).subscribe((httpResponse) => {
+
+        const httpResponseAny: any = httpResponse;
+
+        const httpStatusCode = httpResponseAny.status;
 
         if (httpStatusCode !== 200) {
 
-          const httpStatusText = httpResponse.statusText;
+          const httpStatusText = httpResponseAny.statusText;
 
           console.log(`HTTP Status Code other than 200: ${httpStatusCode} (${httpStatusText})`);
           return;
         }
 
-        const jsonPayload: any = httpResponse.body;
+        const jsonPayload: any = httpResponseAny.body;
         const statusTextFromApi = jsonPayload.type;
 
         if (statusTextFromApi !== 'success') {

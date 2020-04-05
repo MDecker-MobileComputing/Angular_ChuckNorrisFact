@@ -31,9 +31,10 @@ Manual changes required in file `index.html` to enable direct opening of the app
 * `defer`
 * `nomodule`
 
-To fix this when using a Linux machine, you can execute script [FixHtml.sh](./FixHtml.sh).
-
 See also [this question on *stackoverflow.com*](https://stackoverflow.com/questions/58587692/how-to-remove-defer-nomodule-from-the-index-html-on-angular-build), which is unsolved so far.
+
+To fix this you can execute Bash script [FixHtml.sh](./FixHtml.sh).
+Bash scripts can be executed on Linux machines, but this script can also be executed on Windows with "Git Bash".
 
 <br>
 
@@ -44,6 +45,11 @@ The actual loading of the jokes from the REST-API via HTTP is implemented in ser
 The jokes are not fetched individually, but in batches which are stored in an internal array that acts as queue.
 
 For styling the [bootstrap](https://getbootstrap.com) framework is used.
+
+This Angular application can access the REST-API from a different domains than it is served itself because the
+HTTP response from the REST-API contains the HTTP header `Access-Control-Allow-Origin: *`.
+Because of the HTTP header most browsers won't block the Ajax request made by this application despite its
+violation of the *Same Origin Policy*.
 
 <br>
 
