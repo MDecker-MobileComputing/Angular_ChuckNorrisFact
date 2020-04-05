@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 /**
- * Instance of this service class performs the actual HTTP-GET requests to the REST-API.
- * Several random jokes are fetched at once and stored in a Queue.
+ * An instance of this service class performs the actual HTTP-GET requests to the REST-API.
+ * Several random jokes are fetched at once and stored in a queue.
  */
 @Injectable({
   providedIn: 'root'
@@ -70,9 +70,6 @@ export class IcndbService {
   public fetchJokes(): void {
 
     // { observe: 'response' } as configuration to get access to whole HTTP response.
-    // https://brianflove.com/2018/09/03/angular-http-client-observe-response/
-
-
     const optionsObj: any = { observe: 'response' };
 
     this.httpClient.get(this.URL_ENDPOINT, optionsObj).subscribe((httpResponse) => {
@@ -89,7 +86,7 @@ export class IcndbService {
           return;
         }
 
-        const jsonPayload: any = httpResponseAny.body;
+        const jsonPayload: any  = httpResponseAny.body;
         const statusTextFromApi = jsonPayload.type;
 
         if (statusTextFromApi !== 'success') {
@@ -106,7 +103,7 @@ export class IcndbService {
         for (const jokeObject of valueArray) {
 
           let joke = jokeObject.joke;
-          joke = joke.replace(/&quot\;/g, '"'); // replace &quot; with quotation mark
+          joke = joke.replace(/&quot\;/g, '"'); // replace escape sequence &quot; with quotation mark
 
           this.jokeQueue.push(joke);
         }
