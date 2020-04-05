@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs/icndbClient",
+            "outputPath": "docs/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "icndbClient"
+    }
+  },
+  "defaultProject": "icndbClient",
+  "cli": {
+    "analytics": "602c24bb-8dc6-4efb-8019-fb62f4723741"
+  }
 }

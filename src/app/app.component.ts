@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { IcndbService } from './icndb.service';
+
 
 @Component({
   selector: 'mide-root',
@@ -8,34 +9,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
 
-  public witz = '';
+  /** Current joke to be displayed on UI; referenced by interpolation in HTML. */
+  public joke = '';
 
-  constructor(public httpClient: HttpClient){}
 
   /**
-   * Event-Handler-Methode für Button.
+   * Triggers fetching of first batch of jokes.
+   *
+   * @param icndbService  Object with logic for fetching and caching jokes from REST-API.
    */
-  sendeAnfrageAnWebAPI(): void {
+  constructor(private icndbService: IcndbService){
 
-    // const url = 'http://date.jsontest.com/';
-
-    const url = 'https://api.icndb.com/jokes/random/';
-    // Web-API muss in Response den Header "Access-Control-Allow-Origin: *"
-    // zurückliefern, sonst blockiert der Browser wegen CORS Policy den Request
-    //
-    // Komplette HTTP-Response mit { observe: 'response' }:
-    // https://brianflove.com/2018/09/03/angular-http-client-observe-response/
-
-    this.httpClient.get(url, { observe: 'response' }).subscribe((httpResponse) => {
-
-        console.log(`HTTP-Status: ${httpResponse.status}`);
-
-        const responseBody: any = httpResponse.body;
-
-        console.log(`API-Status: ${responseBody.type}`);
-
-        this.witz = responseBody.value.joke;
-    });
-
+    icndbService.fetchJokes();
   }
+
+
+  /**
+   * Event handler method for button "Show next joke".
+   */
+  public showNextJoke(): void {
+
+    this.joke = this.icndbService.getJoke();
+  }
+
 }
