@@ -19,13 +19,13 @@ export class AppComponent {
 
 
   /**
-   * Triggers fetching of first batch of jokes.
+   * Triggers fetching of first batch of jokes and injects two dependencies.
    *
    * @param icndbService  Object with logic for fetching and caching jokes from REST-API.
    *
    * @param favstoreService  Object for storing user's favorite jokes
    */
-  constructor( private icndbService: IcndbService,
+  constructor( private icndbService   : IcndbService,
                private favstoreService: FavstoreService ){
 
     icndbService.fetchJokes();
@@ -40,6 +40,15 @@ export class AppComponent {
     this.jokeObj = this.icndbService.getJoke();
 
     this.showNoJokesWarning = this.jokeObj.isEmpty();
+  }
+
+
+  /**
+   * Event handler for button "Save as favorite".
+   */
+  public onButtonSaveJoke(): void {
+
+      this.favstoreService.saveJoke( this.jokeObj );
   }
 
 }

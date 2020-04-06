@@ -75,4 +75,12 @@ export class Joke {
         return this.text == null || this.text === '';
     }
 
+    /**
+     * @return true when text of joke is filled
+     */
+    public isFilled(): boolean {
+
+        return this.text != null && this.text.length > 0;
+    }
+
 }
