@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IcndbService } from './icndb.service';
 import { FavstoreService } from './favstore.service';
+import { Joke } from './joke';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { FavstoreService } from './favstore.service';
 export class AppComponent {
 
   /** Current joke to be displayed on UI; referenced by {{ interpolation }} on HTML page. */
-  public joke = '';
+  public jokeObj = new Joke('', 0);
 
   /** While this flag has the value "true", a warning is made visible that says that currently no jokes are available. */
   public showNoJokesWarning = false;
@@ -21,11 +22,11 @@ export class AppComponent {
    * Triggers fetching of first batch of jokes.
    *
    * @param icndbService  Object with logic for fetching and caching jokes from REST-API.
-   * 
+   *
    * @param favstoreService  Object for storing user's favorite jokes
    */
-  constructor( private icndbService: IcndbService, 
-               private favstoreService: FavstoreService){
+  constructor( private icndbService: IcndbService,
+               private favstoreService: FavstoreService ){
 
     icndbService.fetchJokes();
   }
@@ -36,9 +37,9 @@ export class AppComponent {
    */
   public showNextJoke(): void {
 
-    this.joke = this.icndbService.getJoke();
+    this.jokeObj = this.icndbService.getJoke();
 
-    this.showNoJokesWarning = ( this.joke === '' );
+    this.showNoJokesWarning = this.jokeObj.isEmpty();
   }
 
 }

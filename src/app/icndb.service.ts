@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Joke } from './joke';
+
 
 
 /**
@@ -20,8 +22,8 @@ export class IcndbService {
   /** Constant to be set in constructor (therefore not declared as "static"). */
   private readonly URL_ENDPOINT;
 
-  /** Array of strings acting as queue (first in, first out). */
-  private jokeQueue: string[] = [];
+  /** Array of Joke objects acting as queue (first in, first out). */
+  private jokeQueue: Joke[] = [];
 
 
   /**
@@ -43,12 +45,12 @@ export class IcndbService {
    *
    * @return  Text of joke or empty string when no jokes are available.
    */
-  public getJoke(): string {
+  public getJoke(): Joke {
 
     if ( this.jokeQueue.length === 0 ) {
 
       this.fetchJokes();
-      return '';
+      return new Joke('', -1);
     }
 
     const joke = this.jokeQueue.shift(); // method "shift()" removes element from array
@@ -100,12 +102,16 @@ export class IcndbService {
 
         console.log(`Received batch of ${valueArray.length} jokes from REST-API.`);
 
-        for (const jokeObject of valueArray) {
+        for (const resultObject of valueArray) {
 
-          let joke = jokeObject.joke;
-          joke = joke.replace(/&quot\;/g, '"'); // replace escape sequence &quot; with quotation mark
+          let jokeTxt = resultObject.joke;
+          jokeTxt = jokeTxt.replace(/&quot\;/g, '"'); // replace escape sequence &quot; with quotation mark
 
-          this.jokeQueue.push(joke);
+          let id = resultObject.id;
+
+          let jokeObj = new Joke( jokeTxt, id);
+
+          this.jokeQueue.push( jokeObj );
         }
     });
 
