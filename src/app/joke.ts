@@ -65,8 +65,7 @@ export class Joke {
     }
 
     /**
-     * When this method return true, then the UI should display a warn dialog
-     * saying that currently no messages are available.
+     * Method to check if joke is empty (i.e. contains no text) or not.
      *
      * @return true when text is null or an empty string.
      */
@@ -76,11 +75,24 @@ export class Joke {
     }
 
     /**
+     * Method to check if joke contains text or not.
+     *
      * @return true when text of joke is filled
      */
     public isFilled(): boolean {
 
         return this.text != null && this.text.length > 0;
+    }
+
+
+    /**
+     * Method to build string representation of the object.
+     *
+     * @return  String representation of this object with ID and text of joke
+     */
+    public toString(): string  {
+
+        return `Joke with ID ${this.id}: "${this.text}"`;
     }
 
 }

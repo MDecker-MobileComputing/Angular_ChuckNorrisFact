@@ -30,7 +30,7 @@ export class FavstoreService {
       this.localStorageSupported = true;
       console.log('LocalStorage is supported in current browser.');
 
-      // fill shadowStorageMap
+      this.readAllFavoritesFromLocalStorate();
 
     } else {
 
@@ -39,9 +39,30 @@ export class FavstoreService {
     }
   }
 
+  /**
+   * Reads all jokes from localStorage and copies them in shadowStorageMap.
+   * This method is to be called once immediately after the start of the application.
+   */
+  private readAllFavoritesFromLocalStorate() {
+
+    for (let i = 0; i < window.localStorage.length; i++){
+
+      const keyStr       = window.localStorage.key(i);
+      const jokeObjAsStr = window.localStorage.getItem(keyStr);
+
+      let joke = new Joke('', 0);
+
+      Object.assign( joke, JSON.parse(jokeObjAsStr) );
+
+      this.shadowStorageMap.set( joke.getID(), joke );
+
+      console.log(`Restored object from localStorage: ${joke}`);
+    }
+  }
+
 
   /**
-   * Save joke. Call this method only when it was checked before that the joke is not already stored
+   * Saves the joke. Call this method only when it was checked before that the joke is not already stored
    * as favorite.
    *
    * @param joke  Joke object to be saved.
@@ -55,11 +76,18 @@ export class FavstoreService {
     } else {
 
       this.shadowStorageMap.set( joke.getID(), joke );
-      //localStorage.setItem("lastJoke", joke);
-      console.log(`Joke with ID ${joke.getID()} saved as favorite.`);
+      window.localStorage.setItem( joke.getID() + '', JSON.stringify(joke) );
+
+      console.log(`Joke with ID ${joke.getID()} saved as favorite, number of saved jokes is now ${this.shadowStorageMap.size}.`);
     }
   }
 
+
+  /**
+   * Remove a joke from the favorites.
+   *
+   * @param joke  Joke object to be removed from favorites.
+   */
   public removeJoke(joke: Joke): void {
 
     if (this.localStorageSupported === false) {
@@ -69,10 +97,11 @@ export class FavstoreService {
     } else {
 
       let wasRemoved = this.shadowStorageMap.delete( joke.getID() );
+      window.localStorage.removeItem( joke.getID() + '' );
 
       if (wasRemoved === true) {
 
-        console.log(`Joke with ID ${joke.getID()} was removed from favorites.`);
+        console.log(`Joke with ID ${joke.getID()} was removed from favorites, number of saved jokes is now ${this.shadowStorageMap.size}.`);
 
       } else {
 
