@@ -17,13 +17,19 @@ export class AppComponent {
   /** While this flag has the value "true", a warning is made visible that says that currently no jokes are available. */
   public showNoJokesWarning = false;
 
+  /** While this flag has the value "true" the button "Save as favorite" is made visible. */
+  public showAddToFavoritesButton = false;
+
+  /** While this flag has the value "true" the button "Remove from favorites" is made visible. */
+  public showRemoveFromFavoritesButton = false;
+
 
   /**
    * Triggers fetching of first batch of jokes and injects two dependencies.
    *
    * @param icndbService  Object with logic for fetching and caching jokes from REST-API.
    *
-   * @param favstoreService  Object for storing user's favorite jokes
+   * @param favstoreService  Object for storing user's favorite jokes.
    */
   constructor( private icndbService   : IcndbService,
                private favstoreService: FavstoreService ){
@@ -39,16 +45,59 @@ export class AppComponent {
 
     this.jokeObj = this.icndbService.getJoke();
 
-    this.showNoJokesWarning = this.jokeObj.isEmpty();
+    if ( this.jokeObj.isFilled() ) {
+
+      this.showNoJokesWarning = false;
+
+      if ( this.favstoreService.isAlreadyStored( this.jokeObj ) ) {
+
+        this.showAddToFavoritesButton      = false;
+        this.showRemoveFromFavoritesButton = true;
+
+      } else {
+
+        this.showAddToFavoritesButton      = true;
+        this.showRemoveFromFavoritesButton = false;
+      }
+
+    } else { // empty joke
+
+      this.showNoJokesWarning            = true;
+      this.showAddToFavoritesButton      = false;
+      this.showRemoveFromFavoritesButton = false;
+    }
+
+    if (this.favstoreService.storageIsSupported() == false) {
+
+      this.showAddToFavoritesButton      = false;
+      this.showRemoveFromFavoritesButton = false;
+    }
   }
 
 
   /**
-   * Event handler for button "Save as favorite".
+   * Event handler for button "Save as favorite":
+   * Current joke is saved in localStorage.
    */
   public onButtonSaveJoke(): void {
 
-      this.favstoreService.saveJoke( this.jokeObj );
+    this.favstoreService.saveJoke( this.jokeObj );
+
+    this.showAddToFavoritesButton      = false;
+    this.showRemoveFromFavoritesButton = true;
+  }
+
+
+  /**
+   * Event handler for button "Remove from favorites".
+   * Current joke is removed from localStorage
+   */
+  public onButtonRemoveFromFavorites(): void {
+
+    this.favstoreService.removeJoke( this.jokeObj );
+
+    this.showAddToFavoritesButton      = true;
+    this.showRemoveFromFavoritesButton = false;
   }
 
 }

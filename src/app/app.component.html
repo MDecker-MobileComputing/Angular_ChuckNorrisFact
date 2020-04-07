@@ -13,8 +13,12 @@
     <br>
     <button type="button"
             class="btn btn-success"
-            *ngIf="jokeObj.isFilled()"
+            *ngIf="showAddToFavoritesButton"
             (click)="onButtonSaveJoke()">Save as favorite</button>
+    <button type="button"
+            class="btn btn-danger"
+            *ngIf="showRemoveFromFavoritesButton"
+            (click)="onButtonRemoveFromFavorites()">Remove from favorites</button>
   </div>
 
 

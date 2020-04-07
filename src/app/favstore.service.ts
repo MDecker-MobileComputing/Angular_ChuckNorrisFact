@@ -56,6 +56,30 @@ export class FavstoreService {
 
       this.shadowStorageMap.set( joke.getID(), joke );
       //localStorage.setItem("lastJoke", joke);
+      console.log(`Joke with ID ${joke.getID()} saved as favorite.`);
+    }
+  }
+
+  public removeJoke(joke: Joke): void {
+
+    if (this.localStorageSupported === false) {
+
+      console.log('Internal error: Attempt to remove joke, but browser does not support localStorage.');
+
+    } else {
+
+      let wasRemoved = this.shadowStorageMap.delete( joke.getID() );
+
+      if (wasRemoved === true) {
+
+        console.log(`Joke with ID ${joke.getID()} was removed from favorites.`);
+
+      } else {
+
+        console.log('Internal error: Attempt to remove joke that was not stored.');
+      }
+
+      //this.shadowStorageMap.set( joke.getID(), joke );
     }
   }
 
@@ -69,9 +93,13 @@ export class FavstoreService {
    */
   public isAlreadyStored(joke: Joke): boolean {
 
-    let resultObj = this.shadowStorageMap.get( joke.getID() );
+    if (this.localStorageSupported === false) {
 
-    return resultObj !== null;
+      console.log('Internal error: Query if joke is already stored, but browser does not support localStorage.');
+      return false;
+    }
+
+    return this.shadowStorageMap.has( joke.getID() );
   }
 
 
