@@ -3,7 +3,7 @@
 Simple [Angular](https://angular.io) application to fetch so called [Chuck Norris facts](https://en.wikipedia.org/wiki/Chuck_Norris_facts) (short jokes)
 from the REST-API provided by [icndb.com](http://www.icndb.com/).
 
-You can try out the application directly [here (GitHub Pages)](https://mdecker-mobilecomputing.github.io/Angular_ChuckNorrisFacts/).
+You can try out the application directly [**here**](https://mdecker-mobilecomputing.github.io/Angular_ChuckNorrisFacts/) via *GitHub Pages*.
 
 <br>
 
@@ -50,6 +50,8 @@ This Angular application can access the REST-API from a different domains than i
 HTTP response from the REST-API contains the HTTP header `Access-Control-Allow-Origin: *`.
 Because of the HTTP header most browsers won't block the Ajax request made by this application despite its
 violation of the *Same Origin Policy*.
+
+The favorites are stored in the browser's *Local Storage*.
 
 <br>
 
