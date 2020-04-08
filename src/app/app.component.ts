@@ -29,10 +29,11 @@ export class AppComponent {
    *
    * @param icndbService  Object with logic for fetching and caching jokes from REST-API.
    *
-   * @param favstoreService  Object for storing user's favorite jokes.
+   * @param favstoreService  Object for storing user's favorite jokes; must be public so
+   *                         in the HTML file it can be referenced by interpolation.
    */
   constructor( private icndbService   : IcndbService,
-               private favstoreService: FavstoreService ){
+               public  favstoreService: FavstoreService ){
 
     icndbService.fetchJokes();
   }

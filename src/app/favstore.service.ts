@@ -39,6 +39,7 @@ export class FavstoreService {
     }
   }
 
+
   /**
    * Reads all jokes from localStorage and copies them in shadowStorageMap.
    * This method is to be called once immediately after the start of the application.
@@ -75,7 +76,7 @@ export class FavstoreService {
 
     } else {
 
-      this.shadowStorageMap.set( joke.getID(), joke );
+      this.shadowStorageMap.set(   joke.getID(), joke );
       window.localStorage.setItem( joke.getID() + '', JSON.stringify(joke) );
 
       console.log(`Joke with ID ${joke.getID()} saved as favorite, number of saved jokes is now ${this.shadowStorageMap.size}.`);
@@ -141,6 +142,24 @@ export class FavstoreService {
   public storageIsSupported(): boolean {
 
     return this.localStorageSupported;
+  }
+
+
+  /**
+   * Get array with all jokes stored in amp.
+   *
+   * @return  Array with all jokes stored as favorites.
+   */
+  public getAllJokes(): Joke[] {
+
+    let resultArray: Joke[] = [];
+
+    this.shadowStorageMap.forEach((value: Joke, key: number) => {
+
+      resultArray.push(value);
+    });
+
+    return resultArray;
   }
 
 }
