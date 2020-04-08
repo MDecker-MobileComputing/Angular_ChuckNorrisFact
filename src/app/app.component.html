@@ -30,15 +30,10 @@
 
   <br><br>
 
-  <div class="row" *ngFor="let joke of favstoreService.getAllJokes()">
-    <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">{{ joke.getText() }}</p>
-          <!--<a href="./begriffe/begriff_adb.html" class="btn btn-primary">Erklärung</a>-->
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <blockquote class="blockquote text-center border border-primary p-3" *ngFor="let joke of favstoreService.getAllJokes()">
+    <p class="mb-0">{{ joke.getText() }}</p>
+    <footer class="blockquote-footer">Fact no {{ joke.getID() }} from icndb.com</footer>
+  </blockquote>
 
 </div>

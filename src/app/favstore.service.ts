@@ -146,7 +146,7 @@ export class FavstoreService {
 
 
   /**
-   * Get array with all jokes stored in amp.
+   * Get array with all jokes stored in map.
    *
    * @return  Array with all jokes stored as favorites.
    */
@@ -160,6 +160,17 @@ export class FavstoreService {
     });
 
     return resultArray;
+  }
+
+
+  /**
+   * Get count of number of jokes stored in HashMap.
+   *
+   * @return  Number of jokes stored
+   */
+  public getNumberOfStoredJokes(): number {
+
+    return this.shadowStorageMap.size;
   }
 
 }
