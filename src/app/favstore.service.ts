@@ -46,18 +46,33 @@ export class FavstoreService {
    */
   private readAllFavoritesFromLocalStorate() {
 
+    const onlyNumbersRegexp = new RegExp('^[0-9]+$');
+
     for (let i = 0; i < window.localStorage.length; i++){
 
-      const keyStr       = window.localStorage.key(i);
+      const keyStr = window.localStorage.key(i);
       const jokeObjAsStr = window.localStorage.getItem(keyStr);
 
+      if (onlyNumbersRegexp.test(keyStr) === false) {
+
+        console.log(`Skipping entry with non-number key "${keyStr}" while restoring from localStorage; content is: "${jokeObjAsStr}"`);
+        continue;
+      }
+            
       let joke = new Joke('', 0);
 
-      Object.assign( joke, JSON.parse(jokeObjAsStr) );
+      try {
 
-      this.shadowStorageMap.set( joke.getID(), joke );
+        Object.assign( joke, JSON.parse(jokeObjAsStr) );
 
-      console.log(`Restored object from localStorage: ${joke}`);
+        this.shadowStorageMap.set( joke.getID(), joke );
+
+        console.log(`Restored object from localStorage: ${joke}`);
+      }
+      catch (error) {
+
+        console.log(`Error during retrieval of joke with key ${keyStr} from localStorage: ${error}`);
+      }
     }
   }
 
