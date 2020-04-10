@@ -31,9 +31,18 @@
   <br><br>
 
 
-  <blockquote class="blockquote text-center border border-primary p-3" *ngFor="let joke of favstoreService.getAllJokes()">
+  <blockquote class="blockquote text-center border border-primary p-3"
+              *ngFor="let joke of favstoreService.getAllJokes()">
+
+    <button type="button" class="close" aria-label="Close"
+            (click)="onButtonRemoveFromFavoritesById( joke.getID() )">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
     <p class="mb-0">{{ joke.getText() }}</p>
+
     <footer class="blockquote-footer">Fact no {{ joke.getID() }} from icndb.com</footer>
+
   </blockquote>
 
 </div>

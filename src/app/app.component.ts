@@ -101,4 +101,15 @@ export class AppComponent {
     this.showRemoveFromFavoritesButton = false;
   }
 
+
+  /**
+   * Event handler to remove joke from list of favorites.
+   *
+   * @param id  ID of joke to be removed
+   */
+  public onButtonRemoveFromFavoritesById(id: number): void {
+
+    this.favstoreService.removeJokeById(id);
+  }
+
 }

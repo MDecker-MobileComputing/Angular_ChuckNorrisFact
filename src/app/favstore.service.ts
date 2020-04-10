@@ -108,8 +108,34 @@ export class FavstoreService {
 
         console.log('Internal error: Attempt to remove joke that was not stored.');
       }
+    }
+  }
 
-      //this.shadowStorageMap.set( joke.getID(), joke );
+
+  /**
+   * Remove a joke from the favorites from which only the ID is known.
+   *
+   * @param jokeId  Number of joke to be removed from favorites.
+   */
+  public removeJokeById(jokeId: number): void {
+
+    if (this.localStorageSupported === false) {
+
+      console.log('Internal error: Attempt to remove joke, but browser does not support localStorage.');
+
+    } else {
+
+      let wasRemoved = this.shadowStorageMap.delete( jokeId );
+      window.localStorage.removeItem( jokeId + '' );
+
+      if (wasRemoved === true) {
+
+        console.log(`Joke with ID ${jokeId} was removed from favorites, number of saved jokes is now ${this.shadowStorageMap.size}.`);
+
+      } else {
+
+        console.log('Internal error: Attempt to remove joke that was not stored.');
+      }
     }
   }
 
