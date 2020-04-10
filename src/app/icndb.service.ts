@@ -107,9 +107,9 @@ export class IcndbService {
           let jokeTxt = resultObject.joke;
           jokeTxt = jokeTxt.replace(/&quot\;/g, '"'); // replace escape sequence &quot; with quotation mark
 
-          let id = resultObject.id;
+          const id = resultObject.id;
 
-          let jokeObj = new Joke( jokeTxt, id);
+          const jokeObj = new Joke( jokeTxt, id);
 
           this.jokeQueue.push( jokeObj );
         }

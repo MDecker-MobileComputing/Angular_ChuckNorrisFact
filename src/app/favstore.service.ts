@@ -17,7 +17,7 @@ export class FavstoreService {
   private localStorageSupported = false;
 
   /** HashMap for storing favorite jokes "in memory", key is ID of joke. */
-  private shadowStorageMap = new Map<number,Joke>();
+  private shadowStorageMap = new Map<number, Joke>();
 
 
   /**
@@ -58,8 +58,8 @@ export class FavstoreService {
         console.log(`Skipping entry with non-number key "${keyStr}" while restoring from localStorage; content is: "${jokeObjAsStr}"`);
         continue;
       }
-            
-      let joke = new Joke('', 0);
+
+      const joke = new Joke('', 0);
 
       try {
 
@@ -123,7 +123,7 @@ export class FavstoreService {
 
     } else {
 
-      let wasRemoved = this.shadowStorageMap.delete( jokeId );
+      const wasRemoved = this.shadowStorageMap.delete( jokeId );
       window.localStorage.removeItem( jokeId + '' );
 
       if (wasRemoved === true) {
@@ -176,7 +176,7 @@ export class FavstoreService {
    */
   public getAllJokes(): Joke[] {
 
-    let resultArray: Joke[] = [];
+    const resultArray: Joke[] = [];
 
     this.shadowStorageMap.forEach((value: Joke, key: number) => {
 

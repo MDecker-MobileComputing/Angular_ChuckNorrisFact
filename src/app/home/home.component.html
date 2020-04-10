@@ -1,0 +1,39 @@
+<button type="button"
+        class="btn btn-primary btn-lg btn-block mt-5"
+        (click)="showNextJoke()">Show next joke</button>
+
+
+<div class="jumbotron mt-5" *ngIf="jokeObj != null && jokeObj.isFilled()">
+  <h4>{{ jokeObj.getText() }}</h4>
+  <br>
+  <button type="button"
+          class="btn btn-success"
+          *ngIf="showAddToFavoritesButton"
+          (click)="onButtonSaveJoke()">Save as favorite</button>
+  <button type="button"
+          class="btn btn-danger"
+          *ngIf="showRemoveFromFavoritesButton"
+          (click)="onButtonRemoveFromFavorites()">Remove from favorites</button>
+</div>
+
+
+<div class="mt-5 alert alert-warning" role="alert" *ngIf="showNoJokesWarning">
+  No jokes available; try again in a few seconds.
+</div>
+
+<br><br>
+
+
+<blockquote class="blockquote text-center border border-primary p-3"
+            *ngFor="let joke of favstoreService.getAllJokes()">
+
+  <button type="button" class="close" aria-label="Close"
+          (click)="onButtonRemoveFromFavoritesById( joke.getID() )">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <p class="mb-0">{{ joke.getText() }}</p>
+
+  <footer class="blockquote-footer">Fact no {{ joke.getID() }} from icndb.com</footer>
+
+</blockquote>
