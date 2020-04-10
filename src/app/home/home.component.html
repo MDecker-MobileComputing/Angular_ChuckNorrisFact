@@ -1,3 +1,7 @@
+<div style="text-align:center">
+        <h1 class="display-5 mt-3 mb-5">Fetch the jokes</h1>
+    </div>
+
 <button type="button"
         class="btn btn-primary btn-lg btn-block mt-5"
         (click)="showNextJoke()">Show next joke</button>
@@ -23,17 +27,6 @@
 
 <br><br>
 
-
-<blockquote class="blockquote text-center border border-primary p-3"
-            *ngFor="let joke of favstoreService.getAllJokes()">
-
-  <button type="button" class="close" aria-label="Close"
-          (click)="onButtonRemoveFromFavoritesById( joke.getID() )">
-    <span aria-hidden="true">&times;</span>
-  </button>
-
-  <p class="mb-0">{{ joke.getText() }}</p>
-
-  <footer class="blockquote-footer">Fact no {{ joke.getID() }} from icndb.com</footer>
-
-</blockquote>
+<button type="button" 
+        routerLink="/favs" 
+        class="btn btn-success btn-lg btn-block">Go to favorites ( {{ favstoreService.getNumberOfStoredJokes() }} )</button>
