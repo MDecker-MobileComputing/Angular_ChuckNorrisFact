@@ -10,7 +10,7 @@
           (click)="showNextJoke()">Show next joke</button>
 
 
-  <div class="jumbotron mt-5">
+  <div class="jumbotron mt-5" *ngIf="jokeObj != null && jokeObj.isFilled()">
     <h4>{{ jokeObj.getText() }}</h4>
     <br>
     <button type="button"

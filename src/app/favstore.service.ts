@@ -91,24 +91,7 @@ export class FavstoreService {
    */
   public removeJoke(joke: Joke): void {
 
-    if (this.localStorageSupported === false) {
-
-      console.log('Internal error: Attempt to remove joke, but browser does not support localStorage.');
-
-    } else {
-
-      let wasRemoved = this.shadowStorageMap.delete( joke.getID() );
-      window.localStorage.removeItem( joke.getID() + '' );
-
-      if (wasRemoved === true) {
-
-        console.log(`Joke with ID ${joke.getID()} was removed from favorites, number of saved jokes is now ${this.shadowStorageMap.size}.`);
-
-      } else {
-
-        console.log('Internal error: Attempt to remove joke that was not stored.');
-      }
-    }
+    this.removeJokeById( joke.getID() );
   }
 
 
