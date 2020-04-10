@@ -11,7 +11,7 @@ export class FavoritesComponent {
 
   constructor(public favstoreService: FavstoreService) { }
 
-  
+
   /**
    * Event handler to remove joke from list of favorites.
    *
