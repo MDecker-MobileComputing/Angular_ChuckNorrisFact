@@ -17,11 +17,14 @@
 
 </blockquote>
 
-<!--
+<div style="text-align:center" *ngIf="favstoreService.getNumberOfStoredJokes() === 0">
+        <h1 class="display-5 mt-3 mb-5">Currently no jokes are stored as favorites</h1>
+</div>
+    
 <button type="button"
-        (click)="onButtonRemoveAll()"
-        class="btn btn-danger mt-3">Alle löschen</button>
--->
+        routerLink="/delfavs"
+        *ngIf="favstoreService.getNumberOfStoredJokes() > 0"
+        class="btn btn-danger btn-lg btn-block mt-5">Delete all favorites ...</button>
 
 <div class="my-5"></div>
 

@@ -13,6 +13,9 @@ import { Joke } from './joke';
 })
 export class FavstoreService {
 
+  /** Pattern for regular expression to recognized localStorage Keys that consist only of numbers. */
+  private static readonly REGEXP_ONLY_NUMBERS = new RegExp('^[0-9]+$');
+
   /** Flag is only true when current browser is supporting local storage. */
   private localStorageSupported = false;
 
@@ -45,15 +48,13 @@ export class FavstoreService {
    * This method is to be called once immediately after the start of the application.
    */
   private readAllFavoritesFromLocalStorate() {
-
-    const onlyNumbersRegexp = new RegExp('^[0-9]+$');
-
+    
     for (let i = 0; i < window.localStorage.length; i++){
 
       const keyStr = window.localStorage.key(i);
       const jokeObjAsStr = window.localStorage.getItem(keyStr);
 
-      if (onlyNumbersRegexp.test(keyStr) === false) {
+      if (FavstoreService.REGEXP_ONLY_NUMBERS.test(keyStr) === false) {
 
         console.log(`Skipping entry with non-number key "${keyStr}" while restoring from localStorage; content is: "${jokeObjAsStr}"`);
         continue;
@@ -195,6 +196,27 @@ export class FavstoreService {
   public getNumberOfStoredJokes(): number {
 
     return this.shadowStorageMap.size;
+  }
+
+
+  /**
+   * Deletes all favorites from localStorage and shadowStorageMap.
+   */
+  public deleteAllJokes(): void {
+
+    this.shadowStorageMap = new Map<number, Joke>();
+
+    if ( this.storageIsSupported() == false ) { return; }
+
+    for (let i = 0; i < window.localStorage.length; i++){
+
+      const keyStr = window.localStorage.key(i);
+
+      if (FavstoreService.REGEXP_ONLY_NUMBERS.test(keyStr) === false) {
+
+        localStorage.removeItem(keyStr);
+      }
+    }    
   }
 
 }

@@ -6,13 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { DelfavsComponent } from './delfavs/delfavs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FavoritesComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    DelfavsComponent
   ],
   imports: [
     BrowserModule,

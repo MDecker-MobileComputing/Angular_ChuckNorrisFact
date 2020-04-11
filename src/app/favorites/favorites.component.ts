@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FavstoreService } from '../favstore.service';
 
+/**
+ * Component for page that shows list of all favorites.
+ */
 @Component({
   selector: 'mide-favorites',
   templateUrl: './favorites.component.html',
@@ -21,15 +24,6 @@ export class FavoritesComponent {
   public onButtonRemoveFromFavoritesById(id: number): void {
 
     this.favstoreService.removeJokeById(id);
-  }
-
-
-  /**
-   * Event handler for button to remove all favorites.
-   */
-  public onButtonRemoveAll(): void {
-
-    console.log("Jetzt sollen alle Favs geloescht werden.");
   }
 
 }
