@@ -48,7 +48,7 @@ export class FavstoreService {
    * This method is to be called once immediately after the start of the application.
    */
   private readAllFavoritesFromLocalStorate() {
-    
+
     for (let i = 0; i < window.localStorage.length; i++){
 
       const keyStr = window.localStorage.key(i);
@@ -206,7 +206,7 @@ export class FavstoreService {
 
     this.shadowStorageMap = new Map<number, Joke>();
 
-    if ( this.storageIsSupported() == false ) { return; }
+    if ( this.storageIsSupported() === false ) { return; }
 
     for (let i = 0; i < window.localStorage.length; i++){
 
@@ -216,7 +216,7 @@ export class FavstoreService {
 
         localStorage.removeItem(keyStr);
       }
-    }    
+    }
   }
 
 }

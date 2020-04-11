@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'mide-delfavs',
   templateUrl: './delfavs.component.html',
-  styles: []  
+  styles: []
 })
 export class DelfavsComponent {
 
   /** Constructor for Dependency Injection. */
-  constructor(public favstoreService: FavstoreService, 
+  constructor(public favstoreService: FavstoreService,
               private router: Router) { }
 
   /**
