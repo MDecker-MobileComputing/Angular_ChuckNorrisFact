@@ -9,6 +9,7 @@ import { FavstoreService } from '../favstore.service';
 })
 export class FavoritesComponent {
 
+  /** Constructor for Dependency Injection. */
   constructor(public favstoreService: FavstoreService) { }
 
 
@@ -20,6 +21,15 @@ export class FavoritesComponent {
   public onButtonRemoveFromFavoritesById(id: number): void {
 
     this.favstoreService.removeJokeById(id);
+  }
+
+
+  /**
+   * Event handler for button to remove all favorites.
+   */
+  public onButtonRemoveAll(): void {
+
+    console.log("Jetzt sollen alle Favs geloescht werden.");
   }
 
 }
