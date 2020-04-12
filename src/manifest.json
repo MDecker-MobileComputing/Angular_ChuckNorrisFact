@@ -2,6 +2,7 @@
     "short_name": "Chuck Norris facts",
     "name": "Client for icndb.com",
     "description": "Client to fetch Chuck Norris Facts from icndb.com and store favorites.",
+    "start_url": "/index.html",
     "icons": [
       {
         "src": "/assets/images/icon-512.png",
