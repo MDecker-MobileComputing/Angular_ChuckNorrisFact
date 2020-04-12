@@ -26,17 +26,11 @@ Execute command `npm run build` to build the application.
 
 The target folder for output of command `ng build` was moved to [docs](docs/) to enable serving of the generated application via [GitHub Pages](https://pages.github.com/), see key `architect/build/options/outputPath` in file [angular.json](angular.json).
 
-Manual changes required in file `index.html` to enable direct opening of the application in a browser form the file system (i.e. NOT via HTTP): In the `<script>`-Tags all occurences of the following attributes are to be removed:
-* `type="module"`
-* `defer`
-* `nomodule`
-
-See also [this question on *stackoverflow.com*](https://stackoverflow.com/questions/58587692/how-to-remove-defer-nomodule-from-the-index-html-on-angular-build), which is unsolved so far.
-
-To fix this you can execute Bash script [FixHtml.sh](./FixHtml.sh).
-Bash scripts can be executed on Linux machines, but this script can also be executed on Windows with "Git Bash".
-
 <br>
+
+File [manifest.json](src/manifest.json) will also be put into the target folder because it is declared
+in file [angular.json](angular.json) in the array with key `projects/architect/assets`.
+This manifest file is referenced by a `<link>` in file [index.html](src/index.html).
 
 ----
 ## Internals ##

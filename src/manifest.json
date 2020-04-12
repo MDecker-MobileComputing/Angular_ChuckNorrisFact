@@ -1,0 +1,37 @@
+{
+    "short_name": "Chuck Norris facts",
+    "name": "Client for icndb.com",
+    "description": "Client to fetch Chuck Norris Facts from icndb.com.",
+    "icons": [
+      {
+        "src": "/assets/images/icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },
+      {
+        "src": "/assets/images/icon-256.png",
+        "type": "image/png",
+        "sizes": "256x256"
+      },
+      {
+        "src": "/assets/images/icon-128.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "/assets/images/icon-064.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      },
+      {
+        "src": "/assets/images/icon-032.png",
+        "type": "image/png",
+        "sizes": "32x32"
+      }
+    ],
+    "start_url": "/index.html",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3367D6"
+  }
