@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Joke } from './joke';
 
 
-
 /**
  * An instance of this service class performs the actual HTTP-GET requests to the REST-API.
  * Several random jokes are fetched at once and stored in a queue.
@@ -104,12 +103,23 @@ export class IcndbService {
 
         for (const resultObject of valueArray) {
 
-          let jokeTxt = resultObject.joke;
-          jokeTxt = jokeTxt.replace(/&quot\;/g, '"'); // replace escape sequence &quot; with quotation mark
-
-          const id = resultObject.id;
+          const jokeTxt    = resultObject.joke.replace(/&quot\;/g, '"'); // replace escape sequence &quot; with quotation mark
+          const categories = resultObject.categories; // array of "tags" like "nerdy" or "explicit"
+          const id         = resultObject.id;
 
           const jokeObj = new Joke( jokeTxt, id);
+
+          for (const category of categories) {
+
+            if (category === Joke.CATEGORY_NERDY) {
+
+              jokeObj.setHasCategoryNerdy();
+            }
+            if (category === Joke.CATEGORY_EXPLICIT) {
+
+              jokeObj.setHasCategoryExplicit();
+            }
+          }
 
           this.jokeQueue.push( jokeObj );
         }

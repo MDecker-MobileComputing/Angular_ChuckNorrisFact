@@ -1,6 +1,6 @@
 <div style="text-align:center">
-        <h1 class="display-5 mt-3 mb-5">Fetch the jokes</h1>
-    </div>
+  <h1 class="display-5 mt-3 mb-5">Fetch the jokes</h1>
+</div>
 
 <button type="button"
         class="btn btn-primary btn-lg btn-block mt-5"
@@ -10,6 +10,9 @@
 <div class="jumbotron mt-5" *ngIf="jokeObj != null && jokeObj.isFilled()">
   <h4>{{ jokeObj.getText() }}</h4>
   <br>
+  <span class="badge badge-info" *ngIf="jokeObj.getHasCategoryNerdy()"   >Nerdy</span>
+  <span class="badge badge-info" *ngIf="jokeObj.getHasCategoryExplicit()">Explicit</span>
+  <br><br>
   <button type="button"
           class="btn btn-warning"
           *ngIf="showAddToFavoritesButton"
