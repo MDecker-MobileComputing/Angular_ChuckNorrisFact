@@ -13,14 +13,18 @@
 
   <p class="mb-0">{{ joke.getText() }}</p>
 
-  <footer class="blockquote-footer">Fact no {{ joke.getID() }} from icndb.com</footer>
+  <footer class="blockquote-footer">
+      Fact no {{ joke.getID() }} from <i>icndb.com</i>
+      <span *ngIf="joke.getHasCategoryNerdy()">, categorized as "nerdy"</span>
+      <span *ngIf="joke.getHasCategoryExplicit()">, categorized as "explicit"</span>.
+  </footer>
 
 </blockquote>
 
 <div style="text-align:center" *ngIf="favstoreService.getNumberOfStoredJokes() === 0">
         <h1 class="display-5 mt-3 mb-5">Currently no jokes are stored as favorites</h1>
 </div>
-    
+
 <button type="button"
         routerLink="/delfavs"
         *ngIf="favstoreService.getNumberOfStoredJokes() > 0"
