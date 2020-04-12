@@ -28,8 +28,8 @@ The target folder for output of command `ng build` was moved to [docs](docs/) to
 
 <br>
 
-File [manifest.json](src/manifest.json) will also be put into the target folder because it is declared
-in file [angular.json](angular.json) in the array with key `projects/architect/assets`.
+File [manifest.json](src/manifest.json) will also be copied into the target folder because it is declared
+as asset (see file [angular.json](angular.json) in the array with key `projects/architect/assets`).
 This manifest file is referenced by a `<link>` in file [index.html](src/index.html).
 
 ----
