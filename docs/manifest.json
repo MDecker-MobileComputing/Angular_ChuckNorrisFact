@@ -6,27 +6,27 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "/assets/images/icon-512.png",
+        "src": "assets/images/icon-512.png",
         "type": "image/png",
         "sizes": "512x512"
       },
       {
-        "src": "/assets/images/icon-256.png",
+        "src": "assets/images/icon-256.png",
         "type": "image/png",
         "sizes": "256x256"
       },
       {
-        "src": "/assets/images/icon-128.png",
+        "src": "assets/images/icon-128.png",
         "type": "image/png",
         "sizes": "128x128"
       },
       {
-        "src": "/assets/images/icon-064.png",
+        "src": "assets/images/icon-064.png",
         "type": "image/png",
         "sizes": "64x64"
       },
       {
-        "src": "/assets/images/icon-032.png",
+        "src": "assets/images/icon-032.png",
         "type": "image/png",
         "sizes": "32x32"
       }
