@@ -24,13 +24,14 @@ You can try out the application directly [**here**](https://mdecker-mobilecomput
 
 Execute command `npm run build` to build the application.
 
-The target folder for output of command `ng build` was moved to [docs](docs/) to enable serving of the generated application via [GitHub Pages](https://pages.github.com/), see key `architect/build/options/outputPath` in file [angular.json](angular.json).
+The target folder for output of command `ng build` was moved to folder [docs](docs/) to enable serving of the generated application via [GitHub Pages](https://pages.github.com/), see key `architect/build/options/outputPath` in file [angular.json](angular.json).
 
 <br>
 
-File [manifest.json](src/manifest.json) will also be copied into the target folder because it is declared
-as asset (see file [angular.json](angular.json) in the array with key `projects/architect/assets`).
-This manifest file is referenced by a `<link>` in file [index.html](src/index.html).
+The application has a [Web App Manifest](https://web.dev/add-manifest/), see file [src/manifest.json](src/manifest.json).
+This manifest is declared in file [angular.json](angular.json) in the array `projects/architect/assets`, so
+it is also copied to the target folder [docs](docs/).
+This manifest file is referenced by a `<link>` in file [src/index.html](src/index.html).
 
 ----
 ## Internals ##
