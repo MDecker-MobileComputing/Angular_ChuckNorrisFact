@@ -32,6 +32,8 @@ The application has a [Web App Manifest](https://web.dev/add-manifest/), see fil
 This manifest is declared in file [angular.json](angular.json) in the array `projects/architect/assets`, so
 it is also copied to the target folder [docs](docs/).
 This manifest file is referenced by a `<link>` in file [src/index.html](src/index.html).
+The *Web App Manifest* can be checked in Chome und Chrome-based browsers like Opera in the *Developer Tools* under "Application | Manifest",
+see [this screenshot](screenshots/screenshot_CheckApplicationManifest.png).
 
 ----
 ## Internals ##
@@ -46,7 +48,11 @@ HTTP response from the REST-API contains the HTTP header `Access-Control-Allow-O
 Because of the HTTP header most browsers won't block the Ajax request made by this application despite its
 violation of the *Same Origin Policy*.
 
-The favorites are stored in the browser's *Local Storage*.
+The favorites are stored in the browser's *Local Storage*, i.e. stored favorites are available only in the browser installation that was used to save them. 
+The favorites in the *Local Storage* can be checked in the browser's developer tools;
+for example, in Chrome und Chrome-based browsers like Opera you have to open the 
+*Developer Tools* and navigate to "Application | Local Storage", see 
+[this screenshot](screenshots/screenshot_CheckLocalStorage.png).
 
 <br>
 
