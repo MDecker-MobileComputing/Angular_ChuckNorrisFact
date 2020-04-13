@@ -2,7 +2,8 @@
     "short_name": "Chuck Norris facts",
     "name": "Client for icndb.com",
     "description": "Client to fetch Chuck Norris Facts from icndb.com and store favorites.",
-    "start_url": "https://mdecker-mobilecomputing.github.io/Angular_ChuckNorrisFacts/",
+    "start_url": "index.html",
+    "orientation": "portrait",
     "icons": [
       {
         "src": "/assets/images/icon-512.png",
@@ -30,8 +31,8 @@
         "sizes": "32x32"
       }
     ],
-    "background_color": "#3367D6",
+    "theme_color": "aliceblue",
+    "background_color": "red",
     "display": "standalone",
-    "scope": "/",
-    "theme_color": "#3367D6"
+    "scope": "/"
   }
