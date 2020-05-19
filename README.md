@@ -16,6 +16,7 @@ You can try out the application directly [**here**](https://mdecker-mobilecomput
 * [Article on "Chuck Norris facts" on Wikipedia](https://en.wikipedia.org/wiki/Chuck_Norris_facts)
 * [Tutorial on HTTP-GET requests in an Angular application](https://www.ahmedbouchefra.com/angular/angular-9-8-example-import-httpclientmodule-and-send-http-ajax-requests/)
 * [Video "Chuck Norris facts read by Chuck Norris" on youtube.com](https://www.youtube.com/watch?v=kQmPMZeN7JQ)
+* Similar API: https://api.chucknorris.io/
 
 <br>
 
