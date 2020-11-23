@@ -62,4 +62,4 @@ for example, in Chrome und Chrome-based browsers like Opera you have to open the
 
 See the [LICENSE file](LICENSE.md) for license rights and limitations (GPL v3) for the files in this repository.
 
-The author of this application is *NOT* related to [The Internet Chuck Norris Database (icndb.com)](http://www.icndb.com/).
+The author of this application is *NEITHER* related to [The Internet Chuck Norris Database (icndb.com)](http://www.icndb.com/) *NOR* to Chuck Norris.
