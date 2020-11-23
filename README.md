@@ -46,7 +46,7 @@ For styling the [bootstrap](https://getbootstrap.com) framework is used.
 
 This Angular application can access the REST-API from a different domains than it is served itself because the
 HTTP response from the REST-API contains the HTTP header `Access-Control-Allow-Origin: *`.
-Because of the HTTP header most browsers won't block the Ajax request made by this application despite its
+This HTTP header tells most browsers to not block the Ajax request made by this application despite its
 violation of the *Same Origin Policy*.
 
 The favorites are stored in the browser's *Local Storage*, i.e. stored favorites are available only in the browser installation that was used to save them. 
