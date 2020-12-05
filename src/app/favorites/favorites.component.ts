@@ -7,12 +7,13 @@ import { FavstoreService } from '../favstore.service';
 @Component({
   selector: 'mide-favorites',
   templateUrl: './favorites.component.html',
-  styles: [
-  ],
+  styles: []  
 })
 export class FavoritesComponent {
 
-  /** Constructor for Dependency Injection. */
+  /** 
+   * Constructor for Dependency Injection. 
+   */
   constructor(public favstoreService: FavstoreService) { }
 
 
