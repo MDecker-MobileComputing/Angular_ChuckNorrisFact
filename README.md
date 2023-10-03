@@ -1,5 +1,11 @@
 # Angular application to fetch Chuck Norris facts from icndb.com #
 
+<br>
+
+**Not working anymore, because Web-API `icndb.com` was disbled?**
+
+<br>
+
 Simple [Angular](https://angular.io) application to fetch so called [Chuck Norris facts](https://en.wikipedia.org/wiki/Chuck_Norris_facts) (short jokes)
 from the REST-API provided by [icndb.com](http://www.icndb.com/).
 
@@ -8,7 +14,10 @@ You can try out the application directly [**here**](https://mdecker-mobilecomput
 <br>
 
 ----
+
 ## References ##
+
+<br>
 
 * [Description of REST-API provided by ICNDB](http://www.icndb.com/api/)
 * File [ExampleResponseFromRestAPI.json](./ExampleResponseFromRestAPI.json) with an example for an response from the
@@ -21,7 +30,10 @@ You can try out the application directly [**here**](https://mdecker-mobilecomput
 <br>
 
 ----
+
 ## Building the application ##
+
+<br>
 
 Execute command `npm run build` to build the application.
 
@@ -36,8 +48,13 @@ This manifest file is referenced by a `<link>` in file [src/index.html](src/inde
 The *Web App Manifest* can be checked in Chome und Chrome-based browsers like Opera in the *Developer Tools* under "Application | Manifest",
 see [this screenshot](screenshots/screenshot_CheckApplicationManifest.png).
 
+<br>
+
 ----
+
 ## Internals ##
+
+<br>
 
 The actual loading of the jokes from the REST-API via HTTP is implemented in service class [icndb.service.ts](src/app/icndb.service.ts).
 The jokes are not fetched individually, but in batches which are stored in an internal array that acts as queue.
@@ -58,8 +75,13 @@ for example, in Chrome und Chrome-based browsers like Opera you have to open the
 <br>
 
 ----
+
 ## License ##
+
+<br>
 
 See the [LICENSE file](LICENSE.md) for license rights and limitations (GPL v3) for the files in this repository.
 
 The author of this application is *NEITHER* related to [The Internet Chuck Norris Database (icndb.com)](http://www.icndb.com/) *NOR* to Chuck Norris.
+
+<br>
